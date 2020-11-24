@@ -1,0 +1,15 @@
+name: test_setup_taskfile
+
+on:
+  push:
+
+jobs:
+  test_setup_taskfile:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Install Taskfile
+        uses: arduino/actions/setup-taskfile@umbynos/fix_warnings
+        with:
+          version: '3.x'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
