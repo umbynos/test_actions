@@ -4,13 +4,11 @@ on:
   push:
 
 jobs:
-  env:
-    VERSION: ${GITHUB_REF##*/}
-    MAJOR_MINOR_VERSION: ${VERSION%.*}
-
   test_env_vars:
     runs-on: ubuntu-20.04
-
+    env:
+      VERSION: ${GITHUB_REF##*/}
+      MAJOR_MINOR_VERSION: ${VERSION%.*}
     steps:
       - name: env vars
         run: echo $MAJOR_MINOR_VERSION
