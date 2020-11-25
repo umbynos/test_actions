@@ -26,4 +26,5 @@ jobs:
         run: |
           cat ${GITHUB_ENV}
           echo $VERSION
+          echo ${VERSION%.*}
           echo $MAJOR_MINOR_VERSION
