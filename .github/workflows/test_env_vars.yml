@@ -12,19 +12,17 @@ jobs:
           VERSION: ${GITHUB_REF##*/}
         run: |
           echo ${GITHUB_REF##*/}
-          echo ${VERSION}
-          echo ${VERSION%.*}
+          echo ${VERSION}  # not working
+          echo ${VERSION%.*}  # not working
 
       - name: env vars second try
         env:
           VERSION: ${GITHUB_REF##*/}
         run: |
-          cat ${GITHUB_ENV}
           echo "VERSION=${GITHUB_REF##*/}" >> $GITHUB_ENV
           echo "MAJOR_MINOR_VERSION=${VERSION%.*}" >> $GITHUB_ENV
       - name: read env
         run: |
-          cat ${GITHUB_ENV}
           echo $VERSION
-          echo ${VERSION%.*}
-          echo $MAJOR_MINOR_VERSION
+          echo ${VERSION%.*}  # working
+          echo $MAJOR_MINOR_VERSION  # not working probably because version is not available yet
