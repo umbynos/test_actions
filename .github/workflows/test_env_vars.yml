@@ -6,13 +6,11 @@ on:
 jobs:
   test_env_vars:
     runs-on: ubuntu-20.04
-    env:
-      VERSION: ${GITHUB_REF##*/}
-      MAJOR_MINOR_VERSION: ${{VERSION}%.*} 
     steps:
       - name: env vars
+        env:
+          VERSION: ${GITHUB_REF##*/}
         run: |
           echo ${GITHUB_REF##*/}
-          echo ${{ env.VERSION }}
-          echo ${{env.VERSION}%.*}
-          echo ${{ env.MAJOR_MINOR_VERSION }}
+          echo ${VERSION}
+          echo ${VERSION%.*}
