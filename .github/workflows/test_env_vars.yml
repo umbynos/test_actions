@@ -19,11 +19,11 @@ jobs:
         env:
           VERSION: ${GITHUB_REF##*/}
         run: |
-          echo ${GITHUB_ENV}
+          cat ${GITHUB_ENV}
           echo "VERSION=${GITHUB_REF##*/}" >> $GITHUB_ENV
           echo "MAJOR_MINOR_VERSION=${VERSION%.*}" >> $GITHUB_ENV
       - name: read env
         run: |
-          echo ${GITHUB_ENV}
+          cat ${GITHUB_ENV}
           echo $VERSION
           echo $MAJOR_MINOR_VERSION
