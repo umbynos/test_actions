@@ -14,3 +14,16 @@ jobs:
           echo ${GITHUB_REF##*/}
           echo ${VERSION}
           echo ${VERSION%.*}
+
+      - name: env vars second try
+        env:
+          VERSION: ${GITHUB_REF##*/}
+        run: |
+          echo ${GITHUB_ENV}
+          echo "VERSION=${GITHUB_REF##*/}" >> $GITHUB_ENV
+          echo "MAJOR_MINOR_VERSION=${VERSION%.*}" >> $GITHUB_ENV
+      - name: read env
+        run: |
+          echo ${GITHUB_ENV}
+          echo $VERSION
+          echo $MAJOR_MINOR_VERSION
