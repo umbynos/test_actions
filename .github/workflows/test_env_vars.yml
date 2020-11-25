@@ -11,4 +11,7 @@ jobs:
       MAJOR_MINOR_VERSION: ${VERSION%.*}
     steps:
       - name: env vars
-        run: echo $MAJOR_MINOR_VERSION
+        run: |
+          echo ${GITHUB_REF##*/}
+          echo ${env.VERSION}
+          echo ${env.MAJOR_MINOR_VERSION}
